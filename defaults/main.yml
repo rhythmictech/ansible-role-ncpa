@@ -1,0 +1,5 @@
+ncpa_packages: 
+  - ncpa
+ncpa_repo_package_url: https://repo.nagios.com/nagios/7/nagios-repo-7-4.el7.noarch.rpm
+
+ncpa_community_string: 

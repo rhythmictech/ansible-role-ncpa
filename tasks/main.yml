@@ -1,0 +1,45 @@
+---
+- name: install ncpa repo
+  yum:
+    name: "{{ ncpa_repo_package_url }}"
+    state: present
+
+- name: install ncpa package
+  yum:
+    name: "{{ ncpa_packages }}"
+    state: present
+
+- name: place ncpa config file
+  template:
+    src: usr.local.ncpa.etc.ncpa.cfg.j2
+    dest: /usr/local/ncpa/etc/ncpa.cfg
+    owner: nagios
+    group: nagcmd
+    mode: 0640
+  notify: restart ncpa_listener
+
+- name: place custom nagios plugins
+  copy:
+    src: "{{ item }}"
+    dest: "/usr/lib64/nagios/plugins/{{ item | regex_replace('usr.lib64.nagios.plugins.','') }}"
+    owner: root
+    group: root
+    mode: 0755
+  with_fileglob: ../files/usr.lib64.nagios.plugins.*
+    - check_file_exists.sh
+    - check_file_doesnt_exist.sh
+    - check_find.sh
+    - check_long_procs.pl
+    - check_mountpoint.sh
+    - check_smartarray_controller
+    - check_raid.pl
+    - check_newest_file_age
+    - check_relay_monitoring.sh
+    - check_postfix_mailqueue2.sh
+    - check_lv.sh
+
+- name: ensure ncpa_listener is started and enabled
+  service: name=ncpa_listener state=started enabled=yes
+
+- name: ensure ncpa_passive is disabled
+  service: name=ncpa_passive state=stopped enabled=no

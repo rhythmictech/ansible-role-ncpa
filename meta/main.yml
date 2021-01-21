@@ -1,0 +1,19 @@
+---
+
+galaxy_info:
+  author: Rhythmic Operations <opsteam@rhythmictech.com>
+  description: Ansible Role for installing/configuring Collectd
+  company: Rhythmic Technologies, Inc.
+  license: Proprietary
+  min_ansible_version: 2.0
+  platforms:
+    - name: EL
+      versions:
+        - 7
+    - name: Amazon Linux 2
+      versions:
+        - 2
+    - name: Oracle Enterprise Linux
+      versions:
+        - 7
+dependencies: []
