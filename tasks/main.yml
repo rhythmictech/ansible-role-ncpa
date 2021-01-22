@@ -21,11 +21,11 @@
 - name: place custom nagios plugins
   copy:
     src: "{{ item }}"
-    dest: "/usr/lib64/nagios/plugins/{{ item | regex_replace('usr.lib64.nagios.plugins.','') }}"
+    dest: "/usr/local/ncpa/plugins/{{ item | regex_replace('usr.lib64.nagios.plugins.','') }}"
     owner: root
     group: root
     mode: 0755
-  with_fileglob: ../files/usr.lib64.nagios.plugins.*
+  with_fileglob: ../files/usr.local.ncpa.plugins.*
 
 - name: ensure ncpa_listener is started and enabled
   service: name=ncpa_listener state=started enabled=yes
