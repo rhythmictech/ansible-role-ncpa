@@ -1,0 +1,3 @@
+- name: restart ncpa_listener
+  service: name=ncpa_listener state=restarted
+  
