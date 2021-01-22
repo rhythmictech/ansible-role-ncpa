@@ -14,7 +14,7 @@
     src: usr.local.ncpa.etc.ncpa.cfg.j2
     dest: /usr/local/ncpa/etc/ncpa.cfg
     owner: nagios
-    group: nagcmd
+    group: nagios
     mode: 0640
   notify: restart ncpa_listener
 
