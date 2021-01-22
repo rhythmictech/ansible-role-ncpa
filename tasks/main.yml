@@ -21,7 +21,7 @@
 - name: place custom nagios plugins
   copy:
     src: "{{ item }}"
-    dest: "/usr/local/ncpa/plugins/{{ item | regex_replace('^\/.*usr.lib64.nagios.plugins.','') }}"
+    dest: "/usr/local/ncpa/plugins/{{ item | regex_replace('^.*usr.local.ncpa.plugins.','') }}"
     owner: root
     group: root
     mode: 0755
