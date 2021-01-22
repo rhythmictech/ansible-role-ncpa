@@ -1,5 +1,13 @@
 ncpa_packages: 
   - ncpa
+  - nagios-plugins
+  - nagios-plugins-disk
+  - nagios-plugins-load
+  - nagios-plugins-ntp
+  - nagios-plugins-procs
+  - nagios-plugins-swap
+  - nagios-plugins-users
+  
 ncpa_repo_package_url: https://repo.nagios.com/nagios/7/nagios-repo-7-4.el7.noarch.rpm
 
 ncpa_community_string: 
