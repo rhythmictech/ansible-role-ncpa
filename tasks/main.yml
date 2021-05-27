@@ -25,7 +25,7 @@
     owner: root
     group: root
     mode: 0755
-  with_fileglob: usr.local.ncpa.plugins.*
+  with_fileglob: usr.lib64.nagios.plugins.*
 
 - name: ensure ncpa_listener is started and enabled
   service: name=ncpa_listener state=started enabled=yes
