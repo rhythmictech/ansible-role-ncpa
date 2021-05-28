@@ -11,3 +11,7 @@ ncpa_packages:
 ncpa_repo_package_url: https://repo.nagios.com/nagios/7/nagios-repo-7-4.el7.noarch.rpm
 
 ncpa_community_string: 
+
+ncpa_sudoers:
+  - allowed_user: postfix
+    allowed_command: /usr/lib64/nagios/plugins/check_postfix_mailqueue2.sh

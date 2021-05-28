@@ -27,6 +27,15 @@
     mode: 0755
   with_fileglob: usr.lib64.nagios.plugins.*
 
+- name: place sudoers file for relevant checks
+  template:
+    src: etc.sudoers.d.99-nagios.j2
+    dest: "/etc/sudoers.d/99-nagios"
+    owner: root
+    group: root
+    mode: '0640'
+  when: ncpa_sudoers|length > 0
+
 - name: ensure ncpa_listener is started and enabled
   service: name=ncpa_listener state=started enabled=yes
 

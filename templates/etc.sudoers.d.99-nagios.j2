@@ -1,0 +1,3 @@
+{% for sudo_lines in ncpa_sudoers %}
+nagios ALL=({{ sudo_lines.allowed_user }}) NOPASSWD:{{ sudo_lines.allowed_command }}
+{% endfor %}
