@@ -4,6 +4,7 @@ ncpa_packages:
   - nagios-plugins-disk
   - nagios-plugins-load
   - nagios-plugins-ntp
+  - nagios-plugins-perl
   - nagios-plugins-procs
   - nagios-plugins-swap
   - nagios-plugins-users
