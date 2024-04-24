@@ -1,13 +1,36 @@
 ---
+- name: add fedora36 repo
+  yum_repository:
+    name: fedora36-nagios
+    baseurl: https://archives.fedoraproject.org/pub/archive/fedora/linux/updates/36/Everything/x86_64/
+    description: "Fedora36 repo to be used for nagios plugins until amazon gets it together"
+    enabled: false
+    gpgkey: https://src.fedoraproject.org/rpms/fedora-repos/raw/rawhide/f/RPM-GPG-KEY-fedora-36-primary
+    state: present
+  when: ncpa_use_fedora_repo
+
+- name: install nagios gpg key
+  rpm_key:
+   state: present
+   key: https://repo.nagios.com/GPG-KEY-NAGIOS-V2
+
 - name: install ncpa repo
   yum:
     name: "{{ ncpa_repo_package_url }}"
     state: present
 
-- name: install ncpa package
+- name: install ncpa packages
   yum:
     name: "{{ ncpa_packages }}"
     state: present
+  when: not ncpa_use_fedora_repo
+
+- name: install ncpa packages from fedora repo (where applicable)
+  yum:
+    enablerepo: fedora36-nagios
+    name: "{{ ncpa_packages }}"
+    state: present
+  when: ncpa_use_fedora_repo
 
 - name: place ncpa config file
   template:
