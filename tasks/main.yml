@@ -19,6 +19,12 @@
     name: "{{ ncpa_repo_package_url }}"
     state: present
 
+- name: install ncpa package from url if specified
+  yum:
+    name: "{{ ncpa_package_url }}"
+    state: present
+  when: ncpa_package_url != ""
+
 - name: install ncpa packages
   yum:
     name: "{{ ncpa_packages }}"

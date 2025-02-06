@@ -11,6 +11,8 @@ ncpa_packages:
   
 ncpa_repo_package_url: https://repo.nagios.com/nagios/7/nagios-repo-7-4.el7.noarch.rpm
 
+ncpa_package_url: ""
+
 # When running on Amazon Linux 2023, we don't have epel, so we don't get nagios-plugins. We can cheat
 # and use a fedora repo. it will only be enabled for the install task in this play.
 ncpa_use_fedora_repo: false
